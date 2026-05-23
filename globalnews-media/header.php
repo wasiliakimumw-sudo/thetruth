@@ -18,3 +18,4 @@ wp_body_open();
     <?php get_template_part('template-parts/header/top-header'); ?>
     <?php get_template_part('template-parts/header/main-header'); ?>
     <?php get_template_part('template-parts/breaking/breaking-news-ticker'); ?>
+    <?php do_action('globalnews_after_header'); ?>

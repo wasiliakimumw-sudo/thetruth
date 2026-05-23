@@ -132,6 +132,7 @@
     </footer>
 </div>
 
+<?php do_action('globalnews_before_footer'); ?>
 <?php wp_footer(); ?>
 </body>
 </html>

@@ -1,9 +1,6 @@
 <?php
-/**
- * GlobalNews Media Theme Functions
- */
 
-define('GLOBALNEWS_VERSION', '1.0.0');
+define('GLOBALNEWS_VERSION', '2.0.0');
 define('GLOBALNEWS_DIR', get_template_directory());
 define('GLOBALNEWS_URI', get_template_directory_uri());
 
@@ -11,17 +8,47 @@ if (!defined('GLOBALNEWS_DEBUG')) {
     define('GLOBALNEWS_DEBUG', defined('WP_DEBUG') && WP_DEBUG);
 }
 
-require_once GLOBALNEWS_DIR . '/inc/theme-setup.php';
-require_once GLOBALNEWS_DIR . '/inc/enqueue.php';
-require_once GLOBALNEWS_DIR . '/inc/helpers.php';
-require_once GLOBALNEWS_DIR . '/inc/menu.php';
-require_once GLOBALNEWS_DIR . '/inc/widgets.php';
-require_once GLOBALNEWS_DIR . '/inc/customizer.php';
-require_once GLOBALNEWS_DIR . '/inc/ads.php';
-require_once GLOBALNEWS_DIR . '/inc/dark-mode.php';
-require_once GLOBALNEWS_DIR . '/inc/seo.php';
-require_once GLOBALNEWS_DIR . '/inc/performance.php';
-require_once GLOBALNEWS_DIR . '/inc/security.php';
-require_once GLOBALNEWS_DIR . '/inc/meta-boxes.php';
-require_once GLOBALNEWS_DIR . '/inc/user-roles.php';
-require_once GLOBALNEWS_DIR . '/inc/admin-settings.php';
+$inc_files = array(
+    'theme-setup',
+    'enqueue',
+    'helpers',
+    'menu',
+    'widgets',
+    'customizer',
+    'ads',
+    'dark-mode',
+    'seo',
+    'performance',
+    'security',
+    'meta-boxes',
+    'user-roles',
+    'admin-settings',
+    'class-sitemap',
+    'class-pwa',
+    'class-rss',
+    'class-social-auto',
+    'class-workflow',
+);
+
+foreach ($inc_files as $file) {
+    $path = GLOBALNEWS_DIR . '/inc/' . $file . '.php';
+    if (file_exists($path)) {
+        require_once $path;
+    }
+}
+
+function globalnews_init_environment() {
+    if (!is_admin() && !wp_doing_ajax() && !defined('REST_REQUEST')) {
+        globalnews_add_security_headers();
+    }
+}
+add_action('init', 'globalnews_init_environment', 0);
+
+function globalnews_flush_rewrite_rules() {
+    $version = get_option('globalnews_rewrite_rules_version', '');
+    if ($version !== GLOBALNEWS_VERSION) {
+        update_option('globalnews_rewrite_rules_version', GLOBALNEWS_VERSION);
+        flush_rewrite_rules();
+    }
+}
+add_action('wp_loaded', 'globalnews_flush_rewrite_rules', 999);
