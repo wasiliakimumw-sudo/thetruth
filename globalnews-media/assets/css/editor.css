@@ -1,0 +1,16 @@
+/* GlobalNews Media Editor Styles */
+body {
+    font-family: 'Inter', sans-serif;
+    font-size: 16px;
+    line-height: 1.8;
+    color: #1a1a1a;
+}
+
+h1, h2, h3, h4, h5, h6 {
+    font-family: 'Poppins', sans-serif;
+    font-weight: 700;
+    line-height: 1.2;
+}
+
+h2 { font-size: 2rem; margin-top: 40px; }
+h3 { font-size: 1.5rem; margin-top: 32px; }

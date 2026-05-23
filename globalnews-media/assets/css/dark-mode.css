@@ -1,0 +1,201 @@
+/* ============================================
+   GlobalNews Media - Dark Mode
+   ============================================ */
+
+body.dark-mode,
+.dark-mode-auto {
+    --gm-bg: #0f0f0f;
+    --gm-bg-alt: #1a1a1a;
+    --gm-bg-card: #1a1a1a;
+    --gm-text: #e0e0e0;
+    --gm-text-light: #a0a0a0;
+    --gm-text-lighter: #707070;
+    --gm-border: #2a2a2a;
+    --gm-border-light: #222222;
+    --gm-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+    --gm-shadow-hover: 0 8px 24px rgba(0, 0, 0, 0.4);
+    --gm-shadow-lg: 0 16px 48px rgba(0, 0, 0, 0.5);
+}
+
+body.dark-mode .dark-mode-toggle .sun-icon {
+    display: block;
+}
+
+body.dark-mode .dark-mode-toggle .moon-icon {
+    display: none;
+}
+
+body.dark-mode .site-header {
+    background: #0f0f0f;
+    border-bottom-color: #2a2a2a;
+}
+
+body.dark-mode .top-header-bar {
+    background: #000;
+}
+
+body.dark-mode .breaking-news-bar {
+    background: var(--gm-primary);
+}
+
+body.dark-mode .hero-section {
+    background: #0f0f0f;
+}
+
+body.dark-mode .home-content-layout {
+    background: #121212;
+}
+
+body.dark-mode .section-header {
+    border-bottom-color: #2a2a2a;
+}
+
+body.dark-mode .newsletter-section {
+    background: linear-gradient(135deg, #0a0a0a 0%, #1a1a1a 50%, #1a0505 100%);
+}
+
+body.dark-mode .video-news-section {
+    background: #0a0a0a;
+}
+
+body.dark-mode .news-card {
+    background: #1a1a1a;
+}
+
+body.dark-mode .category-featured-card,
+body.dark-mode .archive-card,
+body.dark-mode .related-card {
+    background: #1a1a1a;
+}
+
+body.dark-mode .category-list-item {
+    background: #1a1a1a;
+}
+
+body.dark-mode .category-list-item:hover {
+    background: #222;
+}
+
+body.dark-mode .article-header-section {
+    background: #0f0f0f;
+    border-bottom-color: #2a2a2a;
+}
+
+body.dark-mode .archive-header-section,
+body.dark-mode .page-header-section,
+body.dark-mode .search-header-section,
+body.dark-mode .author-archive-header {
+    background: #121212;
+    border-bottom-color: #2a2a2a;
+}
+
+body.dark-mode .article-content blockquote {
+    background: #1a1a1a;
+}
+
+body.dark-mode .article-author-box {
+    background: #1a1a1a;
+}
+
+body.dark-mode .article-toc {
+    background: #1a1a1a;
+    border-color: #2a2a2a;
+}
+
+body.dark-mode .share-btn {
+    background: #1a1a1a;
+}
+
+body.dark-mode .sf-item {
+    background: #1a1a1a;
+}
+
+body.dark-mode .search-field-page {
+    background: #1a1a1a;
+    color: #e0e0e0;
+}
+
+body.dark-mode .subscribe-bar-form input {
+    border-color: #333;
+}
+
+body.dark-mode .subscribe-bar-form input:focus {
+    border-color: var(--gm-primary);
+}
+
+body.dark-mode .comment-form input[type="text"],
+body.dark-mode .comment-form input[type="email"],
+body.dark-mode .comment-form input[type="url"],
+body.dark-mode .comment-form textarea {
+    background: #1a1a1a;
+    border-color: #333;
+    color: #e0e0e0;
+}
+
+body.dark-mode .ticker-item a {
+    color: #fff;
+}
+
+body.dark-mode .comment-body {
+    border-bottom-color: #2a2a2a;
+}
+
+body.dark-mode .article-tag {
+    background: #1a1a1a;
+    border-color: #333;
+}
+
+body.dark-mode .header-ad-container {
+    background: #0a0a0a;
+}
+
+body.dark-mode .ad-container {
+    background: #0a0a0a;
+}
+
+body.dark-mode .widget-title {
+    border-bottom-color: #2a2a2a;
+}
+
+body.dark-mode .site-footer {
+    background: #050505;
+}
+
+body.dark-mode .newsletter-mini {
+    background: linear-gradient(135deg, #0a0a0a, #1a1a1a);
+}
+
+body.dark-mode .newsletter-widget {
+    background: linear-gradient(135deg, #0a0a0a, #1a1a1a);
+}
+
+body.dark-mode .pagination-wrap .page-numbers {
+    border-color: #333;
+    color: #a0a0a0;
+}
+
+body.dark-mode .btn-outline {
+    border-color: #333;
+    color: #e0e0e0;
+}
+
+body.dark-mode .btn-outline:hover {
+    border-color: var(--gm-primary);
+}
+
+/* Auto dark mode based on system preference */
+@media (prefers-color-scheme: dark) {
+    .dark-mode-auto {
+        --gm-bg: #0f0f0f;
+        --gm-bg-alt: #1a1a1a;
+        --gm-bg-card: #1a1a1a;
+        --gm-text: #e0e0e0;
+        --gm-text-light: #a0a0a0;
+        --gm-text-lighter: #707070;
+        --gm-border: #2a2a2a;
+        --gm-border-light: #222222;
+        --gm-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+        --gm-shadow-hover: 0 8px 24px rgba(0, 0, 0, 0.4);
+        --gm-shadow-lg: 0 16px 48px rgba(0, 0, 0, 0.5);
+    }
+}

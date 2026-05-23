@@ -1,0 +1,25 @@
+# Dev environment (WordPress core, PHP, SQLite database)
+globalnews-dev/
+
+# Environment variables
+.env
+
+# Log files
+*.log
+server_*.txt
+
+# Temporary / generated files
+_*
+!**/.gitkeep
+
+# OS files
+Thumbs.db
+.DS_Store
+Desktop.ini
+
+# IDE / editor
+.idea/
+.vscode/
+*.swp
+*.swo
+*~
