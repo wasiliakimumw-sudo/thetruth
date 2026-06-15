@@ -36,7 +36,7 @@
                                 <span class="footer-site-tagline"><?php bloginfo('description'); ?></span>
                             <?php endif; ?>
                         </div>
-                        <p class="footer-about"><?php printf(globalnews_get_landing_setting('globalnews_about_text'), '<strong>' . esc_html(get_bloginfo('name')) . '</strong>'); ?></p>
+                        <p class="footer-about"><?php echo make_clickable(sprintf(globalnews_get_landing_setting('globalnews_about_text'), '<strong>' . esc_html(get_bloginfo('name')) . '</strong>')); ?></p>
                         <div class="footer-social">
                             <a href="<?php echo esc_url(get_theme_mod('globalnews_social_facebook', '#')); ?>" class="footer-social-icon" target="_blank" rel="noopener noreferrer" aria-label="Facebook">
                                 <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg>
@@ -94,15 +94,17 @@
                         <ul class="footer-contact">
                             <li>
                                 <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>
-                                <span><?php echo esc_html(globalnews_get_landing_setting('globalnews_contact_address')); ?></span>
+                                <span>Lilongwe City, Area 13, NOMN House</span>
                             </li>
                             <li>
                                 <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
-                                <a href="mailto:<?php echo esc_attr(globalnews_get_landing_setting('globalnews_contact_email')); ?>"><?php echo esc_html(globalnews_get_landing_setting('globalnews_contact_email')); ?></a>
+                                <a href="mailto:thetruthmw20@gmail.com">thetruthmw20@gmail.com</a>
                             </li>
                             <li>
-                                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07 19.5 19.5 0 01-6-6 19.79 19.79 0 01-3.07-8.67A2 2 0 014.11 2h3a2 2 0 012 1.72 12.84 12.84 0 00.7 2.81 2 2 0 01-.45 2.11L8.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45 12.84 12.84 0 002.81.7A2 2 0 0122 16.92z"/></svg>
-                                <a href="tel:<?php echo esc_attr(globalnews_get_landing_setting('globalnews_contact_phone_tel')); ?>"><?php echo esc_html(globalnews_get_landing_setting('globalnews_contact_phone')); ?></a>
+                                <a href="#" class="gn-feedback-trigger" onclick="document.getElementById('gn-feedback-modal').style.display='flex';return false;">
+                                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2z"/></svg>
+                                    <?php esc_html_e('Give Us Feedback', 'globalnews-media'); ?>
+                                </a>
                             </li>
                         </ul>
                         <?php if (is_active_sidebar('footer-4')) : ?>
@@ -114,6 +116,39 @@
                 </div>
             </div>
         </div>
+
+        <div id="gn-feedback-modal" class="gn-feedback-modal" style="display:none;">
+            <div class="gn-feedback-modal-overlay" onclick="document.getElementById('gn-feedback-modal').style.display='none'"></div>
+            <div class="gn-feedback-modal-content">
+                <button class="gn-feedback-modal-close" onclick="document.getElementById('gn-feedback-modal').style.display='none'">&times;</button>
+                <h3><?php esc_html_e('Give Us Feedback', 'globalnews-media'); ?></h3>
+                <p><?php esc_html_e('Tell us how you feel about our news.', 'globalnews-media'); ?></p>
+                <form id="gn-site-feedback-form" class="gn-site-feedback-form">
+                    <textarea name="message" rows="4" placeholder="<?php esc_attr_e('Write your feedback here...', 'globalnews-media'); ?>" required></textarea>
+                    <button type="submit"><?php esc_html_e('Send Feedback', 'globalnews-media'); ?></button>
+                    <span class="gn-feedback-success" style="display:none;color:#46b450;font-weight:500;"><?php esc_html_e('Thank you for your feedback!', 'globalnews-media'); ?></span>
+                </form>
+            </div>
+        </div>
+        <style>
+        .gn-feedback-modal { position:fixed;z-index:999999;top:0;left:0;right:0;bottom:0;display:flex;align-items:center;justify-content:center; }
+        .gn-feedback-modal-overlay { position:absolute;top:0;left:0;right:0;bottom:0;background:rgba(0,0,0,.7); }
+        .gn-feedback-modal-content { position:relative;background:#1d2327;border:1px solid #2c3338;border-radius:8px;padding:30px;max-width:440px;width:90%;box-shadow:0 10px 40px rgba(0,0,0,.5); }
+        .gn-feedback-modal-close { position:absolute;top:10px;right:14px;background:none;border:none;color:#a0a5aa;font-size:24px;cursor:pointer;padding:0;line-height:1; }
+        .gn-feedback-modal-close:hover { color:#fff; }
+        .gn-feedback-modal-content h3 { color:#fff;margin:0 0 5px;font-size:17px; }
+        .gn-feedback-modal-content p { color:#a0a5aa;margin:0 0 15px;font-size:13px; }
+        .gn-site-feedback-form textarea { width:100%;padding:10px 12px;border:1px solid #2c3338;border-radius:4px;background:#0c0e10;color:#f0f0f1;font-size:13px;resize:vertical;box-sizing:border-box;font-family:inherit; }
+        .gn-site-feedback-form textarea:focus { border-color:#2271b1;outline:none; }
+        .gn-site-feedback-form button[type="submit"] { margin-top:10px;padding:8px 24px;background:#2271b1;color:#fff;border:none;border-radius:4px;cursor:pointer;font-size:13px;font-weight:500;display:inline-block; }
+        .gn-site-feedback-form button[type="submit"]:hover { background:#135e96; }
+        .gn-site-feedback-form button[type="submit"]:disabled { opacity:.6;cursor:default; }
+        .gn-feedback-success { display:none;margin-left:10px; }
+        .gn-feedback-trigger { display:inline-flex;align-items:center;gap:6px;color:#9ec2e6;text-decoration:none;font-size:13px;margin-top:4px; }
+        .gn-feedback-trigger:hover { color:#72aee6;text-decoration:underline; }
+        .gn-feedback-trigger svg { flex-shrink:0; }
+        </style>
+        <?php add_action('wp_footer', 'globalnews_site_feedback_js'); ?>
 
         <div class="footer-bottom">
             <div class="container">

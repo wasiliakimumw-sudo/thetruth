@@ -34,18 +34,12 @@ if ($hero_query->have_posts()) :
                                     <?php else : ?>
                                         <img src="<?php echo esc_url(globalnews_fallback_thumbnail($slide->ID, '1200x675')); ?>" alt="<?php echo esc_attr(get_the_title($slide->ID)); ?>" class="hero-image" loading="lazy" style="width:100%;height:100%;object-fit:cover;">
                                     <?php endif; ?>
-                                    <div class="hero-overlay"></div>
                                 </div>
                                 <div class="hero-content">
                                     <?php if (!empty($categories)) :
                                         echo globalnews_category_badge($categories[0]->term_id);
                                     endif; ?>
                                     <h2 class="hero-title"><?php echo esc_html(get_the_title($slide->ID)); ?></h2>
-                                    <p class="hero-excerpt"><?php echo wp_trim_words(get_the_excerpt($slide->ID), 25); ?></p>
-                                    <div class="hero-meta">
-                                        <span class="hero-author"><?php echo esc_html(get_the_author_meta('display_name', $slide->post_author)); ?></span>
-                                        <span class="hero-date"><?php echo get_the_date('', $slide->ID); ?></span>
-                                    </div>
                                 </div>
                             </a>
                         </article>
