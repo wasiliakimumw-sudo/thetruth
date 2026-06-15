@@ -1,6 +1,6 @@
 <?php
 
-define('GLOBALNEWS_VERSION', '2.0.0');
+define('GLOBALNEWS_VERSION', '2.0.4');
 define('GLOBALNEWS_DIR', get_template_directory());
 define('GLOBALNEWS_URI', get_template_directory_uri());
 
@@ -28,6 +28,12 @@ $inc_files = array(
     'class-rss',
     'class-social-auto',
     'class-workflow',
+    'custom-post-types',
+    'media-upload',
+    'ads-manager',
+    'appearance-settings',
+    'landing-page-settings',
+    'feedback',
 );
 
 foreach ($inc_files as $file) {
@@ -52,3 +58,26 @@ function globalnews_flush_rewrite_rules() {
     }
 }
 add_action('wp_loaded', 'globalnews_flush_rewrite_rules', 999);
+
+function globalnews_show_password_toggle() { ?>
+    <style>
+    .login-show-password { margin-bottom: 16px; }
+    .login-show-password label { font-size: 13px; display: flex; align-items: center; gap: 6px; cursor: pointer; }
+    .login-show-password input[type="checkbox"] { margin: 0; }
+    </style>
+    <script>
+    document.addEventListener('DOMContentLoaded', function() {
+        var pwd = document.getElementById('user_pass');
+        if (!pwd) return;
+        var wrap = pwd.closest('p') || pwd.parentNode;
+        var cb = document.createElement('div');
+        cb.className = 'login-show-password';
+        cb.innerHTML = '<label><input type="checkbox" id="show-pwd"> <?php echo esc_js(__('Show password', 'globalnews-media')); ?></label>';
+        wrap.parentNode.insertBefore(cb, wrap.nextSibling);
+        document.getElementById('show-pwd').addEventListener('change', function() {
+            pwd.type = this.checked ? 'text' : 'password';
+        });
+    });
+    </script>
+<?php }
+add_action('login_footer', 'globalnews_show_password_toggle');

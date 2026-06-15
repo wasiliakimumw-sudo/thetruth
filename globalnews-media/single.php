@@ -55,16 +55,18 @@ while (have_posts()) :
         </div>
     </div>
 
-    <?php if (has_post_thumbnail()) : ?>
-        <div class="article-featured-image">
-            <div class="container container-narrow">
+    <div class="article-featured-image">
+        <div class="container container-narrow">
+            <?php if (has_post_thumbnail()) : ?>
                 <?php the_post_thumbnail('full', array('class' => 'article-featured-img', 'loading' => 'eager')); ?>
                 <?php if (get_the_post_thumbnail_caption()) : ?>
                     <p class="article-image-caption"><?php the_post_thumbnail_caption(); ?></p>
                 <?php endif; ?>
-            </div>
+            <?php else : ?>
+                <img src="<?php echo esc_url(globalnews_fallback_thumbnail(get_the_ID(), '1200x675')); ?>" alt="<?php the_title_attribute(); ?>" class="article-featured-img" loading="eager" style="width:100%;border-radius:var(--gm-radius-lg);">
+            <?php endif; ?>
         </div>
-    <?php endif; ?>
+    </div>
 
     <div class="article-body-section">
         <div class="container">
@@ -95,6 +97,8 @@ while (have_posts()) :
                         endif;
                         ?>
                     </div>
+
+                    <?php get_template_part('template-parts/feedback-widget'); ?>
 
                     <div class="article-author-box">
                         <div class="author-box-avatar">

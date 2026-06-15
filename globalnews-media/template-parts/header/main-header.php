@@ -7,39 +7,19 @@
     <div class="header-main">
         <div class="container">
             <div class="header-inner">
-                <div class="site-branding">
-                    <?php if (has_custom_logo()) : ?>
-                        <div class="site-logo">
-                            <?php the_custom_logo(); ?>
-                        </div>
-                    <?php else : ?>
-                        <div class="site-title">
-                            <a href="<?php echo esc_url(home_url('/')); ?>" rel="home">
-                                <span class="site-name"><?php bloginfo('name'); ?></span>
-                                <span class="site-tagline"><?php bloginfo('description'); ?></span>
-                            </a>
-                        </div>
-                    <?php endif; ?>
-                </div>
+                <div class="header-actions header-actions-left">
+                <button class="mobile-menu-toggle" id="mobileMenuToggle" aria-label="<?php esc_attr_e('Toggle mobile menu', 'globalnews-media'); ?>">
+                    <span class="hamburger-line"></span>
+                    <span class="hamburger-line"></span>
+                    <span class="hamburger-line"></span>
+                </button>
+            </div>
 
-                <nav id="site-navigation" class="main-navigation" aria-label="<?php esc_attr_e('Main Navigation', 'globalnews-media'); ?>">
-                    <?php
-                    if (has_nav_menu('primary')) :
-                        wp_nav_menu(array(
-                            'theme_location' => 'primary',
-                            'menu_class'     => 'main-menu',
-                            'container'      => false,
-                            'fallback_cb'    => false,
-                            'depth'          => 3,
-                            'walker'         => new GlobalNews_Walker_Nav(),
-                        ));
-                    else :
-                        globalnews_primary_menu_fallback();
-                    endif;
-                    ?>
-                </nav>
+            <div class="header-center-ad">
+                <?php globalnews_header_ad(); ?>
+            </div>
 
-                <div class="header-actions">
+            <div class="header-actions">
                     <button class="search-toggle" id="searchToggle" aria-label="<?php esc_attr_e('Toggle search', 'globalnews-media'); ?>">
                         <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                             <circle cx="11" cy="11" r="8"></circle>
@@ -47,19 +27,21 @@
                         </svg>
                     </button>
                     <?php globalnews_dark_mode_toggle(); ?>
-                    <button class="mobile-menu-toggle" id="mobileMenuToggle" aria-label="<?php esc_attr_e('Toggle mobile menu', 'globalnews-media'); ?>">
-                        <span class="hamburger-line"></span>
-                        <span class="hamburger-line"></span>
-                        <span class="hamburger-line"></span>
-                    </button>
+                    <div class="header-logo-circle">
+                    <a href="<?php echo esc_url(home_url('/')); ?>" rel="home" class="header-logo-circle-link">
+                        <?php
+                        $custom_logo_id = get_theme_mod('custom_logo');
+                        if ($custom_logo_id) :
+                            echo wp_get_attachment_image($custom_logo_id, 'full', false, array('class' => 'custom-logo', 'alt' => get_bloginfo('name')));
+                        else :
+                            $logo_url = GLOBALNEWS_URI . '/assets/images/thetruth - logo.png';
+                            ?>
+                            <img src="<?php echo esc_url($logo_url); ?>" alt="<?php bloginfo('name'); ?>" class="custom-logo">
+                        <?php endif; ?>
+                    </a>
+                </div>
                 </div>
             </div>
-        </div>
-    </div>
-
-    <div class="header-ad-container">
-        <div class="container">
-            <?php globalnews_header_ad(); ?>
         </div>
     </div>
 

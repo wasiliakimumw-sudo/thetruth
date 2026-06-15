@@ -16,6 +16,24 @@ get_header();
 
 <main id="primary" class="site-main site-main-home">
 
+    <div class="page-top-ads">
+        <div class="container">
+            <div class="page-top-ads-inner">
+                <?php if (is_active_sidebar('hero-ads')) : ?>
+                    <div id="heroAdsSlider" class="ads-slider">
+                        <div id="heroAdsTrack" class="ads-slider-track">
+                            <?php dynamic_sidebar('hero-ads'); ?>
+                        </div>
+                    </div>
+                <?php else : ?>
+                    <div class="page-top-ads-placeholder">
+                        <span class="page-top-ads-label"><?php esc_html_e('Advertisments', 'globalnews-media'); ?></span>
+                    </div>
+                <?php endif; ?>
+            </div>
+        </div>
+    </div>
+
     <?php
     get_template_part('template-parts/hero/hero-section');
     ?>
@@ -26,6 +44,8 @@ get_header();
                 <div class="content-area-main">
                     <?php
                     get_template_part('template-parts/news-grid/latest-news');
+
+                    get_template_part('template-parts/media/media-gallery');
 
                     $category_sections = array(
                         'politics'     => esc_html__('Politics', 'globalnews-media'),

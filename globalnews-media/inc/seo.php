@@ -268,14 +268,14 @@ function globalnews_schema_organization() {
         ],
         "contactPoint": {
             "@type": "ContactPoint",
-            "telephone": "+1-234-567-890",
+            "telephone": "<?php echo esc_js(globalnews_get_landing_setting('globalnews_schema_telephone')); ?>",
             "contactType": "newsroom"
         },
-        "foundingDate": "2024",
+        "foundingDate": "<?php echo esc_js(globalnews_get_landing_setting('globalnews_schema_founding_date')); ?>",
         "numberOfEmployees": {
             "@type": "QuantitativeValue",
-            "minValue": 10,
-            "maxValue": 50
+            "minValue": <?php echo esc_js(globalnews_get_landing_setting('globalnews_schema_employees_min')); ?>,
+            "maxValue": <?php echo esc_js(globalnews_get_landing_setting('globalnews_schema_employees_max')); ?>
         }
     }
     </script>

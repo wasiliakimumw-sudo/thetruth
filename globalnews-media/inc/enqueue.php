@@ -49,7 +49,6 @@ function globalnews_fonts_url() {
 
 function globalnews_admin_scripts($hook) {
     wp_enqueue_style('globalnews-admin', GLOBALNEWS_URI . '/assets/css/admin.css', array(), GLOBALNEWS_VERSION);
-    wp_enqueue_script('globalnews-admin-menu', GLOBALNEWS_URI . '/assets/js/admin-menu.js', array(), GLOBALNEWS_VERSION, true);
 
     if ('settings_page_globalnews-site-settings' === $hook) {
         wp_enqueue_media();
@@ -58,6 +57,10 @@ function globalnews_admin_scripts($hook) {
             'ajaxUrl' => admin_url('admin-ajax.php'),
             'nonce'   => wp_create_nonce('globalnews_admin_nonce'),
         ));
+    }
+
+    if ('settings_page_globalnews-landing-settings' === $hook) {
+        // Landing page uses standard WP Settings API — no extra JS needed
     }
 }
 add_action('admin_enqueue_scripts', 'globalnews_admin_scripts');

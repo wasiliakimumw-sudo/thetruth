@@ -27,6 +27,10 @@ while (have_posts()) :
                         <div class="page-featured-image">
                             <?php the_post_thumbnail('full', array('class' => 'page-featured-img', 'loading' => 'lazy')); ?>
                         </div>
+                    <?php else : ?>
+                        <div class="page-featured-image">
+                            <img src="<?php echo esc_url(globalnews_fallback_thumbnail(get_the_ID(), '1200x400')); ?>" alt="<?php the_title_attribute(); ?>" class="page-featured-img" loading="lazy" style="width:100%;border-radius:var(--gm-radius);">
+                        </div>
                     <?php endif; ?>
                     <div class="page-content entry-content">
                         <?php

@@ -3,8 +3,11 @@
 remove_action('wp_head', 'wp_generator');
 add_filter('the_generator', '__return_empty_string');
 
-function globalnews_hide_wp_version() {
-    return '';
+function globalnews_hide_wp_version($src) {
+    if (strpos($src, 'ver=')) {
+        $src = remove_query_arg('ver', $src);
+    }
+    return $src;
 }
 add_filter('style_loader_src', 'globalnews_hide_wp_version');
 add_filter('script_loader_src', 'globalnews_hide_wp_version');
@@ -217,27 +220,6 @@ class GlobalNews_SpamProtection {
     }
 }
 GlobalNews_SpamProtection::instance();
-
-function globalnews_add_captcha_to_login() {
-    ?>
-    <p>
-        <label for="globalnews_login_captcha"><?php esc_html_e('Security Question: What is 3 + 4?', 'globalnews-media'); ?></label>
-        <input type="number" name="globalnews_login_captcha" id="globalnews_login_captcha" class="input" value="" size="20" required>
-    </p>
-    <?php
-}
-add_action('login_form', 'globalnews_add_captcha_to_login');
-
-function globalnews_verify_login_captcha($user, $password) {
-    if (isset($_POST['globalnews_login_captcha'])) {
-        $answer = intval($_POST['globalnews_login_captcha']);
-        if ($answer !== 7) {
-            return new WP_Error('captcha_error', __('Security answer is incorrect.', 'globalnews-media'));
-        }
-    }
-    return $user;
-}
-add_filter('wp_authenticate_user', 'globalnews_verify_login_captcha', 10, 2);
 
 function globalnews_hide_admin_users() {
     ?>

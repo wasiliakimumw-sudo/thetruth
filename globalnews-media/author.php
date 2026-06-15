@@ -63,6 +63,8 @@ $author_posts_url = get_author_posts_url($author_id);
                                         <div class="archive-card-thumb">
                                             <?php if (has_post_thumbnail()) : ?>
                                                 <?php the_post_thumbnail('globalnews-grid', array('loading' => 'lazy')); ?>
+                                            <?php else : ?>
+                                                <img src="<?php echo esc_url(globalnews_fallback_thumbnail(get_the_ID(), '600x400')); ?>" alt="<?php the_title_attribute(); ?>" loading="lazy" style="width:100%;height:100%;object-fit:cover;">
                                             <?php endif; ?>
                                         </div>
                                         <div class="archive-card-content">

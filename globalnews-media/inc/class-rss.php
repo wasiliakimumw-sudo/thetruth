@@ -24,7 +24,7 @@ class GlobalNews_RSS {
     public function add_custom_feeds() {
         $categories = get_categories(array('hide_empty' => true, 'number' => 50));
         foreach ($categories as $cat) {
-            add_feed('category/' . $cat->slug, function () use ($cat) {
+            add_feed('cat-' . $cat->slug, function () use ($cat) {
                 $this->render_category_feed($cat);
             });
         }
@@ -111,7 +111,7 @@ class GlobalNews_RSS {
         if (is_category() && $feed_type === 'rss2') {
             $cat = get_queried_object();
             if ($cat && isset($cat->slug)) {
-                return home_url('/feed/category/' . $cat->slug . '/');
+                return home_url('/feed/cat-' . $cat->slug . '/');
             }
         }
         return $feed_url;
@@ -124,7 +124,7 @@ class GlobalNews_RSS {
 <rss version="2.0" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:wfw="http://wellformedweb.org/CommentAPI/" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:sy="http://purl.org/rss/1.0/modules/syndication/" xmlns:slash="http://purl.org/rss/1.0/modules/slash/" xmlns:media="http://search.yahoo.com/mrss/">
     <channel>
         <title><?php echo esc_html($category->name); ?> | <?php bloginfo('name'); ?></title>
-        <atom:link href="<?php echo esc_url(home_url('/feed/category/' . $category->slug . '/')); ?>" rel="self" type="application/rss+xml"/>
+        <atom:link href="<?php echo esc_url(home_url('/feed/cat-' . $category->slug . '/')); ?>" rel="self" type="application/rss+xml"/>
         <link><?php echo esc_url(get_category_link($category->term_id)); ?></link>
         <description><?php echo esc_html($category->description ?: sprintf(__('Latest %s news and updates', 'globalnews-media'), $category->name)); ?></description>
         <lastBuildDate><?php echo mysql2date('r', get_lastpostdate('blog')); ?></lastBuildDate>

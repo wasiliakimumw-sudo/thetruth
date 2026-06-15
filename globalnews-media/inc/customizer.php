@@ -97,7 +97,7 @@ function globalnews_customize_register($wp_customize) {
     ));
 
     $wp_customize->add_setting('globalnews_footer_text', array(
-        'default'           => sprintf(esc_html__('© %d GlobalNews Media. All rights reserved.', 'globalnews-media'), date('Y')),
+        'default'           => sprintf(esc_html__('© %d Thetruth. All rights reserved.', 'globalnews-media'), date('Y')),
         'sanitize_callback' => 'wp_kses_post',
     ));
     $wp_customize->add_control('globalnews_footer_text', array(

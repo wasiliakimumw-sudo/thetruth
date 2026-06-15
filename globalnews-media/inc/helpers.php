@@ -147,6 +147,21 @@ function globalnews_toc($content) {
 }
 add_filter('the_content', 'globalnews_toc');
 
+function globalnews_fallback_thumbnail($post_id = null, $size = '600x400') {
+    if (!$post_id) $post_id = get_the_ID();
+    $seed = get_the_title($post_id);
+    $cat = get_the_category($post_id);
+    $cat_slug = !empty($cat) ? $cat[0]->slug : 'news';
+    $category_seeds = array(
+        'business' => 1, 'economy' => 2, 'entertainment' => 3, 'health' => 4,
+        'politics' => 5, 'sports' => 6, 'technology' => 7, 'world' => 8,
+    );
+    $seed_num = isset($category_seeds[$cat_slug]) ? $category_seeds[$cat_slug] : 0;
+    $random_id = $seed_num * 100 + (crc32($seed) % 99);
+    list($w, $h) = explode('x', $size);
+    return 'https://picsum.photos/seed/' . abs($random_id) . '/' . $w . '/' . $h;
+}
+
 function globalnews_related_posts($post_id = null) {
     if (!$post_id) {
         $post_id = get_the_ID();
@@ -169,6 +184,10 @@ function globalnews_related_posts($post_id = null) {
                             <?php if (has_post_thumbnail()) : ?>
                                 <div class="related-thumb">
                                     <?php the_post_thumbnail('globalnews-grid'); ?>
+                                </div>
+                            <?php else : ?>
+                                <div class="related-thumb">
+                                    <img src="<?php echo esc_url(globalnews_fallback_thumbnail(get_the_ID(), '600x400')); ?>" alt="<?php the_title_attribute(); ?>" loading="lazy" style="width:100%;height:100%;object-fit:cover;">
                                 </div>
                             <?php endif; ?>
                             <h4 class="related-title"><?php the_title(); ?></h4>

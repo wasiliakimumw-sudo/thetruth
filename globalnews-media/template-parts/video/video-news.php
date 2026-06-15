@@ -37,7 +37,11 @@ if ($video_query->have_posts()) :
                     <article class="video-card">
                         <a href="<?php the_permalink(); ?>">
                             <div class="video-thumb-wrapper">
-                                <?php the_post_thumbnail('globalnews-featured', array('loading' => 'lazy')); ?>
+                                <?php if (has_post_thumbnail()) : ?>
+                                    <?php the_post_thumbnail('globalnews-featured', array('loading' => 'lazy')); ?>
+                                <?php else : ?>
+                                    <img src="<?php echo esc_url(globalnews_fallback_thumbnail(get_the_ID(), '600x400')); ?>" alt="<?php the_title_attribute(); ?>" loading="lazy" style="width:100%;height:100%;object-fit:cover;">
+                                <?php endif; ?>
                                 <div class="video-play-icon">
                                     <svg width="40" height="40" viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg>
                                 </div>

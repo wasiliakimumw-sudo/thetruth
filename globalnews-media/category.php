@@ -43,6 +43,8 @@ $category_color = get_term_meta($category->term_id, 'globalnews_category_color',
                                         <div class="archive-card-thumb">
                                             <?php if (has_post_thumbnail()) : ?>
                                                 <?php the_post_thumbnail('globalnews-grid', array('loading' => 'lazy')); ?>
+                                            <?php else : ?>
+                                                <img src="<?php echo esc_url(globalnews_fallback_thumbnail(get_the_ID(), '600x400')); ?>" alt="<?php the_title_attribute(); ?>" loading="lazy" style="width:100%;height:100%;object-fit:cover;">
                                             <?php endif; ?>
                                         </div>
                                         <div class="archive-card-content">
@@ -65,7 +67,7 @@ $category_color = get_term_meta($category->term_id, 'globalnews_category_color',
                             ?>
                         </div>
                     <?php else : ?>
-                        <p class="no-posts"><?php esc_html_e('No posts found in this category.', 'globalnews-media'); ?></p>
+                        <p class="no-posts"><?php esc_html_e('No news under this category.', 'globalnews-media'); ?></p>
                     <?php endif; ?>
                 </div>
                 <?php get_sidebar(); ?>

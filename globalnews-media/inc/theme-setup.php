@@ -199,6 +199,16 @@ function globalnews_register_sidebars() {
     ));
 
     register_sidebar(array(
+        'name'          => esc_html__('Hero Advertisements', 'globalnews-media'),
+        'id'            => 'hero-ads',
+        'description'   => esc_html__('Widget area on the left side of the hero slider for ads', 'globalnews-media'),
+        'before_widget' => '<div id="%1$s" class="widget %2$s">',
+        'after_widget'  => '</div>',
+        'before_title'  => '<h4 class="widget-title hero-ads-title">',
+        'after_title'   => '</h4>',
+    ));
+
+    register_sidebar(array(
         'name'          => esc_html__('Footer Column 4', 'globalnews-media'),
         'id'            => 'footer-4',
         'description'   => esc_html__('Footer fourth column', 'globalnews-media'),

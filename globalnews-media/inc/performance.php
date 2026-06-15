@@ -80,7 +80,9 @@ add_action('wp_head', 'globalnews_add_prefetch', 1);
 function globalnews_preload_key_assets() {
     ?>
     <link rel="preload" as="font" href="<?php echo esc_url(GLOBALNEWS_URI . '/assets/fonts/inter-var.woff2'); ?>" crossorigin>
-    <link rel="preload" as="style" href="<?php echo esc_url(GLOBALNEWS_URI . '/assets/css/main.css'); ?>">
+    <link rel="stylesheet" href="<?php echo esc_url(GLOBALNEWS_URI . '/assets/css/main.css'); ?>">
+    <link rel="stylesheet" href="<?php echo esc_url(GLOBALNEWS_URI . '/assets/css/dark-mode.css'); ?>">
+    <link rel="stylesheet" href="<?php echo esc_url(GLOBALNEWS_URI . '/assets/css/responsive.css'); ?>">
     <?php
     if (has_post_thumbnail() && is_single()) {
         $image = get_the_post_thumbnail_url(null, 'large');
@@ -90,6 +92,15 @@ function globalnews_preload_key_assets() {
     }
 }
 add_action('wp_head', 'globalnews_preload_key_assets', 0);
+
+function globalnews_load_scripts_footer() {
+    ?>
+    <script src="<?php echo esc_url(GLOBALNEWS_URI . '/assets/js/main.js'); ?>"></script>
+    <script src="<?php echo esc_url(GLOBALNEWS_URI . '/assets/js/dark-mode.js'); ?>"></script>
+    <script src="<?php echo esc_url(GLOBALNEWS_URI . '/assets/js/breaking-news.js'); ?>"></script>
+    <?php
+}
+add_action('wp_footer', 'globalnews_load_scripts_footer', 100);
 
 function globalnews_add_cache_headers() {
     if (is_user_logged_in() || is_admin()) {
