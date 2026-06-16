@@ -1,22 +1,5 @@
 <?php
 
-function globalnews_add_video_audio_mime_types($mimes) {
-    $mimes['mp4']  = 'video/mp4';
-    $mimes['webm'] = 'video/webm';
-    $mimes['ogv']  = 'video/ogg';
-    $mimes['mov']  = 'video/quicktime';
-    $mimes['avi']  = 'video/x-msvideo';
-    $mimes['mkv']  = 'video/x-matroska';
-    $mimes['mp3']  = 'audio/mpeg';
-    $mimes['wav']  = 'audio/wav';
-    $mimes['aac']  = 'audio/aac';
-    $mimes['flac'] = 'audio/flac';
-    $mimes['m4a']  = 'audio/mp4';
-    $mimes['ogg']  = 'audio/ogg';
-    return $mimes;
-}
-add_filter('upload_mimes', 'globalnews_add_video_audio_mime_types');
-
 function globalnews_add_upload_submenu_pages() {
     add_submenu_page(
         'edit.php?post_type=video',
@@ -174,9 +157,7 @@ function globalnews_handle_admin_media_upload() {
     ));
 
     if ($post_id) {
-        if (wp_attachment_is_image($attachment_id)) {
-            set_post_thumbnail($post_id, $attachment_id);
-        }
+        set_post_thumbnail($post_id, $attachment_id);
         wp_redirect(admin_url('edit.php?post_type=' . $post_type . '&media_uploaded=1&media_title=' . urlencode($title)));
         exit;
     }

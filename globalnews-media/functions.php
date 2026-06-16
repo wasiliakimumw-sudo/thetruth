@@ -1,6 +1,6 @@
 <?php
 
-define('GLOBALNEWS_VERSION', '2.0.4');
+define('GLOBALNEWS_VERSION', '2.0.5');
 define('GLOBALNEWS_DIR', get_template_directory());
 define('GLOBALNEWS_URI', get_template_directory_uri());
 
@@ -16,7 +16,6 @@ $inc_files = array(
     'widgets',
     'customizer',
     'ads',
-    'dark-mode',
     'seo',
     'performance',
     'security',

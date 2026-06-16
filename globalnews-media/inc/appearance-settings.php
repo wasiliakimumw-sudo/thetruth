@@ -16,7 +16,6 @@ function globalnews_register_appearance_settings() {
     register_setting('globalnews_appearance_settings', 'globalnews_color_scheme');
     register_setting('globalnews_appearance_settings', 'globalnews_primary_color');
     register_setting('globalnews_appearance_settings', 'globalnews_header_bg');
-    register_setting('globalnews_appearance_settings', 'globalnews_dark_mode_default');
 }
 add_action('admin_init', 'globalnews_register_appearance_settings');
 
@@ -31,16 +30,12 @@ function globalnews_ajax_save_appearance_settings() {
     $scheme = sanitize_text_field($_POST['color_scheme']);
     $primary = sanitize_hex_color($_POST['primary_color']);
     $header_bg = sanitize_hex_color($_POST['header_bg']);
-    $dark_mode = sanitize_text_field($_POST['dark_mode_default']);
-
     if (!$primary) $primary = '#e50914';
     if (!$header_bg) $header_bg = '#e50914';
-    if (!$dark_mode) $dark_mode = 'light';
 
     update_option('globalnews_color_scheme', $scheme);
     update_option('globalnews_primary_color', $primary);
     update_option('globalnews_header_bg', $header_bg);
-    update_option('globalnews_dark_mode_default', $dark_mode);
 
     set_theme_mod('globalnews_primary_color', $primary);
     set_theme_mod('globalnews_header_bg', $header_bg);
@@ -49,7 +44,6 @@ function globalnews_ajax_save_appearance_settings() {
         'color_scheme'  => $scheme,
         'primary_color' => $primary,
         'header_bg'     => $header_bg,
-        'dark_mode'     => $dark_mode,
     ));
 }
 add_action('wp_ajax_globalnews_save_appearance_settings', 'globalnews_ajax_save_appearance_settings');
@@ -70,7 +64,6 @@ function globalnews_appearance_page_html() {
     $scheme    = get_option('globalnews_color_scheme', 'default');
     $primary   = get_option('globalnews_primary_color', '#e50914');
     $header_bg = get_option('globalnews_header_bg', '#e50914');
-    $dark_mode = get_option('globalnews_dark_mode_default', 'light');
     $schemes   = globalnews_get_color_schemes();
     ?>
     <div class="wrap">
@@ -107,17 +100,6 @@ function globalnews_appearance_page_html() {
                                     <input type="text" id="gn-header-bg" class="gn-color-picker" value="<?php echo esc_attr($header_bg); ?>" data-default="#e50914">
                                 </label>
                             </p>
-                        </td>
-                    </tr>
-                    <tr>
-                        <th scope="row"><?php esc_html_e('Default Dark Mode', 'globalnews-media'); ?></th>
-                        <td>
-                            <select name="dark_mode_default" id="gn-dark-mode">
-                                <option value="light" <?php selected($dark_mode, 'light'); ?>><?php esc_html_e('Light (default)', 'globalnews-media'); ?></option>
-                                <option value="dark" <?php selected($dark_mode, 'dark'); ?>><?php esc_html_e('Dark', 'globalnews-media'); ?></option>
-                                <option value="auto" <?php selected($dark_mode, 'auto'); ?>><?php esc_html_e('Auto (system preference)', 'globalnews-media'); ?></option>
-                            </select>
-                            <p class="description"><?php esc_html_e('Choose the default colour mode for visitors.', 'globalnews-media'); ?></p>
                         </td>
                     </tr>
                 </table>
@@ -320,15 +302,12 @@ function globalnews_appearance_page_html() {
             var scheme = $('input[name="color_scheme"]:checked').val();
             var primary = $primaryInput.val();
             var header = $headerInput.val();
-            var darkMode = $('#gn-dark-mode').val();
-
             $.post(ajaxurl, {
                 action: 'globalnews_save_appearance_settings',
                 nonce: '<?php echo esc_js(wp_create_nonce('globalnews_admin_nonce')); ?>',
                 color_scheme: scheme,
                 primary_color: primary,
-                header_bg: header,
-                dark_mode_default: darkMode
+                header_bg: header
             }).done(function(res) {
                 if (res.success) {
                     $('#gn-success-modal').fadeIn(200);

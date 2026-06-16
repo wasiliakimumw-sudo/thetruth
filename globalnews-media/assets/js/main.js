@@ -8,54 +8,12 @@
     document.addEventListener('DOMContentLoaded', function() {
 
         /* ============================================
-           Search Overlay
-           ============================================ */
-        var searchToggle = document.getElementById('searchToggle');
-        var searchOverlay = document.getElementById('searchOverlay');
-        var searchClose = document.getElementById('searchClose');
-
-        if (searchToggle && searchOverlay) {
-            searchToggle.addEventListener('click', function(e) {
-                e.preventDefault();
-                searchOverlay.classList.add('active');
-                setTimeout(function() {
-                    var input = searchOverlay.querySelector('.search-field');
-                    if (input) input.focus();
-                }, 300);
-            });
-
-            if (searchClose) {
-                searchClose.addEventListener('click', function() {
-                    searchOverlay.classList.remove('active');
-                });
-            }
-
-            searchOverlay.addEventListener('click', function(e) {
-                if (e.target === searchOverlay) {
-                    searchOverlay.classList.remove('active');
-                }
-            });
-
-            document.addEventListener('keydown', function(e) {
-                if (e.key === 'Escape' && searchOverlay.classList.contains('active')) {
-                    searchOverlay.classList.remove('active');
-                }
-            });
-        }
-
-        /* ============================================
            Mobile Menu
            ============================================ */
-        var mobileToggle = document.getElementById('mobileMenuToggle');
         var mobileOverlay = document.getElementById('mobileMenuOverlay');
         var mobileClose = document.getElementById('mobileMenuClose');
 
-        if (mobileToggle && mobileOverlay) {
-            mobileToggle.addEventListener('click', function() {
-                mobileOverlay.classList.add('active');
-                document.body.style.overflow = 'hidden';
-            });
-
+        if (mobileOverlay) {
             if (mobileClose) {
                 mobileClose.addEventListener('click', function() {
                     mobileOverlay.classList.remove('active');

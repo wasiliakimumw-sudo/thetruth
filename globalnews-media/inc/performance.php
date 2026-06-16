@@ -26,7 +26,7 @@ add_filter('the_content', 'globalnews_add_lazy_loading');
 add_filter('post_thumbnail_html', 'globalnews_add_lazy_loading');
 
 function globalnews_defer_scripts($tag, $handle) {
-    $defer_scripts = array('globalnews-main', 'globalnews-dark-mode', 'globalnews-breaking');
+    $defer_scripts = array('globalnews-main', 'globalnews-breaking');
     $async_scripts = array();
     if (in_array($handle, $defer_scripts)) {
         return str_replace(' src', ' defer src', $tag);
@@ -80,9 +80,8 @@ add_action('wp_head', 'globalnews_add_prefetch', 1);
 function globalnews_preload_key_assets() {
     ?>
     <link rel="preload" as="font" href="<?php echo esc_url(GLOBALNEWS_URI . '/assets/fonts/inter-var.woff2'); ?>" crossorigin>
-    <link rel="stylesheet" href="<?php echo esc_url(GLOBALNEWS_URI . '/assets/css/main.css'); ?>">
-    <link rel="stylesheet" href="<?php echo esc_url(GLOBALNEWS_URI . '/assets/css/dark-mode.css'); ?>">
-    <link rel="stylesheet" href="<?php echo esc_url(GLOBALNEWS_URI . '/assets/css/responsive.css'); ?>">
+    <link rel="stylesheet" href="<?php echo esc_url(GLOBALNEWS_URI . '/assets/css/main.css?v=' . GLOBALNEWS_VERSION); ?>">
+    <link rel="stylesheet" href="<?php echo esc_url(GLOBALNEWS_URI . '/assets/css/responsive.css?v=' . GLOBALNEWS_VERSION); ?>">
     <?php
     if (has_post_thumbnail() && is_single()) {
         $image = get_the_post_thumbnail_url(null, 'large');
@@ -96,7 +95,6 @@ add_action('wp_head', 'globalnews_preload_key_assets', 0);
 function globalnews_load_scripts_footer() {
     ?>
     <script src="<?php echo esc_url(GLOBALNEWS_URI . '/assets/js/main.js'); ?>"></script>
-    <script src="<?php echo esc_url(GLOBALNEWS_URI . '/assets/js/dark-mode.js'); ?>"></script>
     <script src="<?php echo esc_url(GLOBALNEWS_URI . '/assets/js/breaking-news.js'); ?>"></script>
     <?php
 }

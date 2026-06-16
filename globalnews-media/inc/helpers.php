@@ -39,9 +39,7 @@ function globalnews_category_badge($category_id = null) {
     }
     if ($category_id) {
         $cat = get_category($category_id);
-        $color = get_term_meta($cat->term_id, 'globalnews_category_color', true);
-        $style = $color ? 'style="background-color:' . esc_attr($color) . '"' : '';
-        return '<span class="category-badge" ' . $style . '><a href="' . esc_url(get_category_link($cat)) . '">' . esc_html($cat->name) . '</a></span>';
+        return '<span class="category-badge"><a href="' . esc_url(get_category_link($cat)) . '" style="background:#e50914!important;color:#fff!important;display:inline-block!important;padding:3px 10px!important;border-radius:3px!important;font-size:10px!important;font-weight:600!important;text-transform:uppercase!important;letter-spacing:.5px!important;visibility:visible!important;opacity:1!important">' . esc_html($cat->name) . '</a></span>';
     }
     return '';
 }

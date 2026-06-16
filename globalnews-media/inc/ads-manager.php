@@ -18,6 +18,14 @@ function globalnews_ads_admin_menu() {
         'globalnews-header-ads',
         'globalnews_header_ads_admin_page'
     );
+    add_submenu_page(
+        'globalnews-ads',
+        __('Advert', 'globalnews-media'),
+        __('Advert', 'globalnews-media'),
+        'manage_options',
+        'globalnews-advert',
+        'globalnews_advert_admin_page'
+    );
     remove_submenu_page('globalnews-ads', 'globalnews-ads');
 }
 add_action('admin_menu', 'globalnews_ads_admin_menu');
@@ -131,6 +139,7 @@ function globalnews_header_ads_admin_page() {
 
     <script>
     jQuery(function($) {
+        var rowIndex = 1;
         function addRow() {
             var html = '<div class="gn-ad-row" style="background:#f6f7f7;padding:12px;margin-bottom:10px;border:1px solid #c3c4c7;border-radius:4px;">';
             html += '<table class="form-table" style="margin:0;">';
@@ -155,6 +164,7 @@ function globalnews_header_ads_admin_page() {
                     $info.text('');
                 }
             });
+            rowIndex++;
         }
 
         $('#gn-add-ad-row').on('click', addRow);
@@ -282,6 +292,27 @@ function globalnews_delete_header_ad() {
     exit;
 }
 add_action('admin_post_globalnews_delete_header_ad', 'globalnews_delete_header_ad');
+
+function globalnews_advert_admin_page() {
+    ?>
+    <div class="wrap">
+        <h1><?php esc_html_e('Advert', 'globalnews-media'); ?></h1>
+        <p><?php esc_html_e('Manage your advertisement positions and upload banner ads.', 'globalnews-media'); ?></p>
+
+        <div class="gn-settings-card" style="background:#f6f7f7;padding:20px;border:1px solid #c3c4c7;border-radius:4px;margin-top:20px;max-width:600px;">
+            <h2 style="margin-top:0;"><?php esc_html_e('Header Banners', 'globalnews-media'); ?></h2>
+            <p><?php esc_html_e('Upload and manage banner images for the header ad slot.', 'globalnews-media'); ?></p>
+            <a href="<?php echo esc_url(admin_url('admin.php?page=globalnews-header-ads')); ?>" class="button button-primary"><?php esc_html_e('Manage Header Ads', 'globalnews-media'); ?></a>
+        </div>
+
+        <div class="gn-settings-card" style="background:#f6f7f7;padding:20px;border:1px solid #c3c4c7;border-radius:4px;margin-top:20px;max-width:600px;">
+            <h2 style="margin-top:0;"><?php esc_html_e('Ad Codes', 'globalnews-media'); ?></h2>
+            <p><?php esc_html_e('Configure AdSense or custom ad codes for sidebar, inline, article, and other positions.', 'globalnews-media'); ?></p>
+            <a href="<?php echo esc_url(admin_url('customize.php?autofocus[section]=globalnews_ads')); ?>" class="button"><?php esc_html_e('Configure in Customizer', 'globalnews-media'); ?></a>
+        </div>
+    </div>
+    <?php
+}
 
 function globalnews_header_ad_redirect_error($message) {
     wp_safe_redirect(add_query_arg(array(

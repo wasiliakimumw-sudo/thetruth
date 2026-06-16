@@ -4,7 +4,7 @@
  */
 
 $hero_args = array(
-    'posts_per_page'      => 11,
+    'posts_per_page'      => 10,
     'ignore_sticky_posts' => 1,
     'orderby'             => 'date',
     'order'               => 'DESC',

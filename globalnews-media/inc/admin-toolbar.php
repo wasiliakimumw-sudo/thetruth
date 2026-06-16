@@ -51,6 +51,10 @@ function globalnews_admin_footer_bar() {
             <a href="<?php echo esc_url(admin_url('post-new.php?post_type=page')); ?>"><?php esc_html_e('Page', 'globalnews-media'); ?></a>
             <a href="<?php echo esc_url(admin_url('post-new.php?post_type=video')); ?>"><?php esc_html_e('Video', 'globalnews-media'); ?></a>
             <a href="<?php echo esc_url(admin_url('post-new.php?post_type=audio')); ?>"><?php esc_html_e('Audio', 'globalnews-media'); ?></a>
+            <?php if (current_user_can('manage_options')): ?>
+                <a href="<?php echo esc_url(admin_url('admin.php?page=globalnews-header-ads')); ?>"><?php esc_html_e('Header Ads', 'globalnews-media'); ?></a>
+                <a href="<?php echo esc_url(admin_url('admin.php?page=globalnews-ads')); ?>"><?php esc_html_e('Advert', 'globalnews-media'); ?></a>
+            <?php endif; ?>
             <?php if (current_user_can('create_users')): ?>
                 <a href="<?php echo esc_url(admin_url('user-new.php')); ?>"><?php esc_html_e('User', 'globalnews-media'); ?></a>
             <?php endif; ?>

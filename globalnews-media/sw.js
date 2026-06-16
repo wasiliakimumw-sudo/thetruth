@@ -1,12 +1,11 @@
 /* GlobalNews Media - Service Worker */
-const CACHE_NAME = 'globalnews-v2';
+const CACHE_NAME = 'globalnews-v3';
 const OFFLINE_URL = '/offline/';
 
 const PRECACHE_URLS = [
     '/',
     '/wp-content/themes/globalnews-media/assets/css/main.css',
     '/wp-content/themes/globalnews-media/assets/css/responsive.css',
-    '/wp-content/themes/globalnews-media/assets/css/dark-mode.css',
 ];
 
 self.addEventListener('install', function(event) {

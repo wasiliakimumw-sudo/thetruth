@@ -72,10 +72,6 @@ while (have_posts()) :
         <div class="container">
             <div class="article-layout">
                 <div class="article-content-area">
-                    <div class="article-share-sticky">
-                        <?php globalnews_social_share(); ?>
-                    </div>
-
                     <div class="article-content entry-content">
                         <?php
                         the_content();

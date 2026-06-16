@@ -38,13 +38,13 @@ get_header();
     get_template_part('template-parts/hero/hero-section');
     ?>
 
+    <?php get_template_part('template-parts/news-grid/latest-news'); ?>
+
     <div class="home-content-layout">
         <div class="container">
             <div class="content-with-sidebar">
                 <div class="content-area-main">
                     <?php
-                    get_template_part('template-parts/news-grid/latest-news');
-
                     get_template_part('template-parts/media/media-gallery');
 
                     $category_sections = array(

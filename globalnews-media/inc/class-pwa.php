@@ -123,7 +123,7 @@ class GlobalNews_PWA {
 
     private function get_default_sw() {
         ob_start(); ?>
-const CACHE_NAME = 'globalnews-v1';
+const CACHE_NAME = 'globalnews-v3';
 const OFFLINE_URL = '<?php echo home_url('/offline'); ?>';
 const PRECACHE_URLS = ['/', '/wp-content/themes/globalnews-media/assets/css/main.css', '/wp-content/themes/globalnews-media/assets/css/responsive.css'];
 self.addEventListener('install', function(e) { e.waitUntil(caches.open(CACHE_NAME).then(function(c) { return c.addAll(PRECACHE_URLS); }).then(function() { return self.skipWaiting(); })); });

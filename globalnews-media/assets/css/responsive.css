@@ -56,17 +56,9 @@
         grid-template-columns: 1fr;
     }
 
-    .hero-primary .hero-image-wrapper {
-        aspect-ratio: 16/9;
-    }
-
     .hero-secondary {
         display: grid;
         grid-template-columns: repeat(2, 1fr);
-    }
-
-    .hero-secondary-card .hero-image-wrapper {
-        aspect-ratio: 16/10;
     }
 
     .news-grid {
@@ -194,10 +186,6 @@
 
     .hero-secondary {
         grid-template-columns: 1fr;
-    }
-
-    .hero-secondary-card .hero-image-wrapper {
-        aspect-ratio: 16/9;
     }
 
     .news-grid {

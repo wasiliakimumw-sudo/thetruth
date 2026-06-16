@@ -2,39 +2,12 @@
 
 function globalnews_register_landing_settings() {
     $settings = array(
-        // Contact Info
-        'globalnews_contact_address' => array(
-            'label' => __('Address', 'globalnews-media'),
-            'section' => 'contact',
-            'type' => 'text',
-            'default' => '123 News Street, Media City',
-        ),
-        'globalnews_contact_email' => array(
-            'label' => __('Email', 'globalnews-media'),
-            'section' => 'contact',
-            'type' => 'email',
-            'default' => 'info@globalnewsmedia.com',
-        ),
-        'globalnews_contact_phone' => array(
-            'label' => __('Phone (display)', 'globalnews-media'),
-            'section' => 'contact',
-            'type' => 'text',
-            'default' => '+1 (234) 567-890',
-        ),
-        'globalnews_contact_phone_tel' => array(
-            'label' => __('Phone (tel: link)', 'globalnews-media'),
-            'section' => 'contact',
-            'type' => 'text',
-            'default' => '+1234567890',
-            'description' => __('Used for the click-to-call href attribute.', 'globalnews-media'),
-        ),
-
         // Footer About
         'globalnews_about_text' => array(
             'label' => __('About Text', 'globalnews-media'),
             'section' => 'about',
             'type' => 'textarea',
-            'default' => '%s is a leading international news organization delivering breaking news, in-depth analysis, and expert commentary on politics, business, technology, sports, entertainment, and world affairs.',
+            'default' => '%s is a leading international news organization delivering breaking news, in-depth analysis, and expert commentary on politics, business, technology, sports, entertainment, and world affairs. You can follow us on our Facebook page: https://www.facebook.com/zoona.zenizeni.',
             'description' => __('Use %s to insert the site name.', 'globalnews-media'),
         ),
 
@@ -211,14 +184,6 @@ function globalnews_landing_settings_page() {
 
         <form action="options.php" method="post">
             <?php settings_fields('globalnews_landing_settings'); ?>
-
-            <div class="gn-settings-card">
-                <h2 class="gn-section-heading"><?php esc_html_e('Contact Info', 'globalnews-media'); ?></h2>
-                <p class="description"><?php esc_html_e('Displayed in the footer contact column.', 'globalnews-media'); ?></p>
-                <table class="form-table">
-                    <?php globalnews_render_fields($settings, 'contact'); ?>
-                </table>
-            </div>
 
             <div class="gn-settings-card">
                 <h2 class="gn-section-heading"><?php esc_html_e('Footer About Text', 'globalnews-media'); ?></h2>

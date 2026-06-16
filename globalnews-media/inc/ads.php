@@ -1,6 +1,16 @@
 <?php
 
 function globalnews_header_ad() {
+    $uploaded_ads = function_exists('globalnews_get_header_ads') ? globalnews_get_header_ads() : array();
+    if (!empty($uploaded_ads)) {
+        $ad = $uploaded_ads[array_rand($uploaded_ads)];
+        echo '<div class="ad-container ad-header">';
+        echo '<a href="' . esc_url($ad['link_url']) . '" target="_blank" rel="noopener noreferrer">';
+        echo '<img src="' . esc_url($ad['image_url']) . '" alt="' . esc_attr($ad['title']) . '" style="max-width:100%;height:auto;display:block;">';
+        echo '</a>';
+        echo '</div>';
+        return;
+    }
     $ad_code = get_theme_mod('globalnews_header_ad', '');
     if (!empty($ad_code)) {
         echo '<div class="ad-container ad-header">' . wp_kses_post($ad_code) . '</div>';
