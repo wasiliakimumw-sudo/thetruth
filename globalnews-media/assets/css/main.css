@@ -319,11 +319,25 @@ ul, ol {
 .top-primary-nav {
     overflow-x: auto;
     -webkit-overflow-scrolling: touch;
-    scrollbar-width: none;
+    scroll-behavior: smooth;
+    scrollbar-width: thin;
 }
 
 .top-primary-nav::-webkit-scrollbar {
-    display: none;
+    height: 5px;
+}
+
+.top-primary-nav::-webkit-scrollbar-track {
+    background: transparent;
+}
+
+.top-primary-nav::-webkit-scrollbar-thumb {
+    background: rgba(0, 0, 0, 0.15);
+    border-radius: 3px;
+}
+
+.top-primary-nav::-webkit-scrollbar-thumb:hover {
+    background: rgba(0, 0, 0, 0.3);
 }
 
 .top-primary-menu,

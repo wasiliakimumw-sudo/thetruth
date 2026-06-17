@@ -40,6 +40,14 @@
 
 /* Tablet (768px - 991px) */
 @media (max-width: 991px) {
+    .top-primary-nav::-webkit-scrollbar {
+        height: 6px;
+    }
+
+    .top-primary-nav::-webkit-scrollbar-thumb {
+        background: rgba(0, 0, 0, 0.2);
+    }
+
     .main-navigation {
         display: none !important;
     }
@@ -180,6 +188,14 @@
     .top-primary-menu li a {
         font-size: 12px;
         padding: 0 10px;
+    }
+
+    .top-primary-nav::-webkit-scrollbar {
+        height: 6px;
+    }
+
+    .top-primary-nav::-webkit-scrollbar-thumb {
+        background: rgba(0, 0, 0, 0.25);
     }
 
     .header-search-field {
