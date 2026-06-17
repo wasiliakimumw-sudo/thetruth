@@ -202,6 +202,10 @@
         width: 140px;
     }
 
+    .header-center-ad {
+        display: none;
+    }
+
     .container {
         padding: 0 16px;
     }
