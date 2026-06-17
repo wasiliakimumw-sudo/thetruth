@@ -122,6 +122,10 @@
         min-width: 0;
     }
 
+    .media-gallery-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
     .archive-grid {
         grid-template-columns: repeat(2, 1fr);
     }
@@ -138,6 +142,10 @@
 
     .author-archive-social {
         justify-content: center;
+    }
+
+    .children {
+        margin-left: 40px;
     }
 }
 
@@ -172,6 +180,10 @@
     .top-primary-menu li a {
         font-size: 12px;
         padding: 0 10px;
+    }
+
+    .header-search-field {
+        width: 140px;
     }
 
     .container {
@@ -231,6 +243,10 @@
         grid-template-columns: 1fr;
     }
 
+    .media-gallery-grid {
+        grid-template-columns: 1fr;
+    }
+
     .video-card {
         min-width: 250px;
     }
@@ -262,6 +278,7 @@
 
     .subscribe-bar-form input {
         width: 100%;
+        min-width: 0;
     }
 
     .footer-bottom-inner {
@@ -377,6 +394,11 @@
 
     .social-follow-grid {
         grid-template-columns: 1fr;
+    }
+
+    .subscribe-bar-form input {
+        min-width: 0;
+        width: 100%;
     }
 }
 
