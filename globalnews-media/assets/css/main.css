@@ -272,6 +272,7 @@ ul, ol {
     align-items: center;
     gap: 32px;
     flex: 1;
+    min-width: 0;
 }
 
 .top-site-branding {
@@ -321,6 +322,9 @@ ul, ol {
     -webkit-overflow-scrolling: touch;
     scroll-behavior: smooth;
     scrollbar-width: thin;
+    min-width: 0;
+    flex: 1;
+    touch-action: pan-x;
 }
 
 .top-primary-nav::-webkit-scrollbar {
