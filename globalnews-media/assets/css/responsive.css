@@ -40,10 +40,6 @@
 
 /* Tablet (768px - 991px) */
 @media (max-width: 991px) {
-    .top-header-bar {
-        display: none;
-    }
-
     .main-navigation {
         display: none !important;
     }
@@ -154,6 +150,28 @@
         --gm-font-size-xl: 1.15rem;
         --gm-font-size-lg: 1.05rem;
         --gm-header-height: 60px;
+    }
+
+    .top-header-bar {
+        padding: 0 12px;
+    }
+
+    .top-site-branding a {
+        font-size: 1.25rem;
+    }
+
+    .top-header-right {
+        gap: 8px;
+    }
+
+    .current-date,
+    .top-header-separator {
+        display: none;
+    }
+
+    .top-primary-menu li a {
+        font-size: 12px;
+        padding: 0 10px;
     }
 
     .container {
