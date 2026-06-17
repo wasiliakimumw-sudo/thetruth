@@ -14,11 +14,6 @@
             </div>
 
             <div class="header-actions">
-                <button class="mobile-menu-toggle" id="mobileMenuToggle" aria-label="<?php esc_attr_e('Open mobile menu', 'globalnews-media'); ?>">
-                    <span class="hamburger-line"></span>
-                    <span class="hamburger-line"></span>
-                    <span class="hamburger-line"></span>
-                </button>
                     <form role="search" method="get" class="header-search-form" action="<?php echo esc_url(home_url('/')); ?>">
                         <input type="search" class="header-search-field" placeholder="<?php esc_attr_e('Search...', 'globalnews-media'); ?>" value="<?php echo get_search_query(); ?>" name="s">
                         <button type="submit" class="header-search-submit" aria-label="<?php esc_attr_e('Search', 'globalnews-media'); ?>">

@@ -450,14 +450,6 @@ ul, ol {
     height: var(--gm-header-height);
 }
 
-.header-sticky {
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
-}
-
-.header-hidden {
-    top: calc(-1 * var(--gm-header-height));
-}
-
 .header-inner {
     display: flex;
     align-items: center;
@@ -690,26 +682,6 @@ ul, ol {
 }
 
 /* Hamburger */
-.mobile-menu-toggle {
-    display: none;
-    align-items: center;
-    justify-content: center;
-    flex-direction: column;
-    gap: 4px;
-    width: 40px;
-    height: 40px;
-    border: none;
-    background: transparent;
-    color: var(--gm-white);
-    cursor: pointer;
-    border-radius: 50%;
-    transition: background var(--gm-transition);
-}
-
-.mobile-menu-toggle:hover {
-    background: rgba(255, 255, 255, 0.2);
-}
-
 .hamburger-line {
     display: block;
     width: 20px;

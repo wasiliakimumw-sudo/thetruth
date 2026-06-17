@@ -12,16 +12,8 @@
            ============================================ */
         var mobileOverlay = document.getElementById('mobileMenuOverlay');
         var mobileClose = document.getElementById('mobileMenuClose');
-        var mobileToggle = document.getElementById('mobileMenuToggle');
 
         if (mobileOverlay) {
-            if (mobileToggle) {
-                mobileToggle.addEventListener('click', function() {
-                    mobileOverlay.classList.toggle('active');
-                    document.body.style.overflow = mobileOverlay.classList.contains('active') ? 'hidden' : '';
-                });
-            }
-
             if (mobileClose) {
                 mobileClose.addEventListener('click', function() {
                     mobileOverlay.classList.remove('active');
