@@ -70,13 +70,15 @@ if ($featured->have_posts()) :
                         <a href="<?php the_permalink(); ?>" class="category-list-link">
                             <div class="category-list-thumb">
                                 <?php if (has_post_thumbnail()) : ?>
-                                    <?php the_post_thumbnail('globalnews-thumb', array('loading' => 'lazy')); ?>
+                                    <?php the_post_thumbnail('globalnews-featured', array('loading' => 'lazy')); ?>
                                 <?php else : ?>
-                                    <img src="<?php echo esc_url(globalnews_fallback_thumbnail(get_the_ID(), '120x90')); ?>" alt="<?php the_title_attribute(); ?>" loading="lazy" style="width:100%;height:100%;object-fit:cover;">
+                                    <img src="<?php echo esc_url(globalnews_fallback_thumbnail(get_the_ID(), '600x400')); ?>" alt="<?php the_title_attribute(); ?>" loading="lazy" style="width:100%;height:100%;object-fit:cover;">
                                 <?php endif; ?>
                             </div>
                             <div class="category-list-content">
+                                <?php echo globalnews_category_badge(); ?>
                                 <h4 class="category-list-title"><?php the_title(); ?></h4>
+                                <p class="category-list-excerpt"><?php echo wp_trim_words(get_the_excerpt(), 15); ?></p>
                                 <?php echo globalnews_post_meta(); ?>
                             </div>
                         </a>

@@ -34,10 +34,6 @@ get_header();
         </div>
     </div>
 
-    <?php
-    get_template_part('template-parts/hero/hero-section');
-    ?>
-
     <?php get_template_part('template-parts/news-grid/latest-news'); ?>
 
     <div class="home-content-layout">

@@ -7,10 +7,19 @@
     <div class="header-main">
         <div class="container">
             <div class="header-inner">
+            <button class="mobile-menu-toggle" id="mobileMenuToggle">
+                <span class="hamburger-line"></span>
+                <span class="hamburger-line"></span>
+                <span class="hamburger-line"></span>
+            </button>
             <div class="header-center-ad">
-                <div class="ad-container ad-header" style="font-size:1.2rem;font-weight:400;color:#fff;letter-spacing:-0.5px;white-space:nowrap;animation:zoomPulse 2s ease-in-out infinite;">
-                    <?php bloginfo('name'); ?> — Advertise Here
-                </div>
+                <a href="#" class="ad-container ad-header" style="display:flex;align-items:center;gap:10px;text-decoration:none;color:#fff;">
+                    <span style="width:32px;height:24px;border-radius:4px;background:rgba(255,255,255,0.15);flex-shrink:0;display:flex;align-items:center;justify-content:center;position:relative;overflow:hidden;">
+                        <span style="position:absolute;inset:0;background:linear-gradient(90deg,transparent,rgba(255,255,255,0.1),transparent);animation:scan 1.5s ease-in-out infinite;"></span>
+                        <svg width="12" height="12" viewBox="0 0 24 24" fill="currentColor" style="opacity:0.8;"><polygon points="5,3 19,12 5,21"/></svg>
+                    </span>
+                    <span style="font-size:0.8rem;font-weight:500;opacity:0.85;animation:zoomPulse 2s ease-in-out infinite;">Advertise here</span>
+                </a>
             </div>
 
             <div class="header-actions">

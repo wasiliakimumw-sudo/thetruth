@@ -12,8 +12,16 @@
            ============================================ */
         var mobileOverlay = document.getElementById('mobileMenuOverlay');
         var mobileClose = document.getElementById('mobileMenuClose');
+        var mobileToggle = document.getElementById('mobileMenuToggle');
 
         if (mobileOverlay) {
+            if (mobileToggle) {
+                mobileToggle.addEventListener('click', function() {
+                    mobileOverlay.classList.add('active');
+                    document.body.style.overflow = 'hidden';
+                });
+            }
+
             if (mobileClose) {
                 mobileClose.addEventListener('click', function() {
                     mobileOverlay.classList.remove('active');
@@ -83,35 +91,18 @@
         }
 
         /* ============================================
-           Sticky Header
+           Sticky Wrapper - prevent content overlap
            ============================================ */
-        var header = document.querySelector('.site-header');
-        var headerHeight = header ? header.offsetHeight : 0;
-        var lastScrollTop = 0;
-
-        if (header) {
-            window.addEventListener('scroll', function() {
-                var scrollTop = window.pageYOffset || document.documentElement.scrollTop;
-
-                if (scrollTop > 100) {
-                    header.classList.add('header-sticky');
-                } else {
-                    header.classList.remove('header-sticky');
-                }
-
-                if (scrollTop > headerHeight + 100) {
-                    if (scrollTop > lastScrollTop) {
-                        header.classList.add('header-hidden');
-                    } else {
-                        header.classList.remove('header-hidden');
-                    }
-                } else {
-                    header.classList.remove('header-hidden');
-                }
-
-                lastScrollTop = scrollTop;
-            }, { passive: true });
+        function adjustStickyPadding() {
+            var wrap = document.querySelector('.sticky-top-wrap');
+            var mainEl = document.querySelector('#primary');
+            if (wrap && mainEl) {
+                mainEl.style.paddingTop = wrap.offsetHeight + 'px';
+            }
         }
+        adjustStickyPadding();
+        window.addEventListener('resize', adjustStickyPadding);
+        window.addEventListener('load', adjustStickyPadding);
 
         /* ============================================
            Newsletter Form Submit (placeholder)
