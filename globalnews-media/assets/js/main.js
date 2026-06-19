@@ -91,20 +91,6 @@
         }
 
         /* ============================================
-           Sticky Wrapper - prevent content overlap
-           ============================================ */
-        function adjustStickyPadding() {
-            var wrap = document.querySelector('.sticky-top-wrap');
-            var mainEl = document.querySelector('#primary');
-            if (wrap && mainEl) {
-                mainEl.style.paddingTop = wrap.offsetHeight + 'px';
-            }
-        }
-        adjustStickyPadding();
-        window.addEventListener('resize', adjustStickyPadding);
-        window.addEventListener('load', adjustStickyPadding);
-
-        /* ============================================
            Newsletter Form Submit (placeholder)
            ============================================ */
         var newsletterForms = document.querySelectorAll('.newsletter-form, .newsletter-mini-form, .subscribe-bar-form, .newsletter-widget-form');

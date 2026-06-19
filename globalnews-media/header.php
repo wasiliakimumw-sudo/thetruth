@@ -20,7 +20,7 @@ wp_body_open();
     <?php get_template_part('template-parts/header/top-header'); ?>
     <?php get_template_part('template-parts/breaking/headline-ticker'); ?>
     <?php get_template_part('template-parts/breaking/breaking-news-ticker'); ?>
+    </div>
     <?php if (is_front_page()) : ?>
         <?php get_template_part('template-parts/hero/hero-section'); ?>
     <?php endif; ?>
-    </div>
